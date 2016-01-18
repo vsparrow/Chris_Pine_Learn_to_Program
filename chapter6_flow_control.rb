@@ -177,20 +177,27 @@ startingYear=0
 endingYear=0
 yearCounter=0
 puts 'Enter a starting year:'
-startingYear=gets.chomp
-startingYear=startingYear.to_i
+startingYear=gets.chomp.to_i
+#startingYear=startingYear.to_i
 puts 'Enter a ending year:'
-endingYear = gets.chomp
-endingYear=endingYear.to_i
+endingYear = gets.chomp.to_i
+#endingYear=endingYear.to_i
 
 puts 'Here are the leap years:'
 yearCounter=startingYear
 while (yearCounter <= endingYear)
+	if (yearCounter % 400 == 0) or (yearCounter  % 4==0) and (yearCounter % 1000 != 0)
+		puts yearCounter.to_s
+	end
+
+=begin
+
 	if (yearCounter % 400) == 0
 		puts yearCounter.to_s
 	elsif (yearCounter % 4 == 0) and (yearCounter % 1000 != 0)
 		puts yearCounter.to_s
 	end
+=end	
 	yearCounter = yearCounter + 1
 
 end #end while
