@@ -140,17 +140,26 @@ puts 'Go to the store and buy some more, 99 bottles of beer on the wall'
 puts 'Speak to Grandma:'
 speak = ''
 stopSpeaking = false
+byeCount=0
 while stopSpeaking != true
   speak=gets.chomp	
   
   if speak == 'BYE'
-  	stopSpeaking = true
+  	#stopSpeaking = true
+  	byeCount = byeCount+1
+  else
+  	byeCount=0
   end #end speak == 'BYE'
+
+  if byeCount ==3
+  	stopSpeaking=true
+  end
 
   if speak != speak.upcase
   	puts 'SPEAK UP, SONNY!'
   else
-  	puts 'NO, NOT SINCE 1938!'
+  	#puts 'NO, NOT SINCE 1938!'
+  	puts 'NO, NOT SINCE ' + (rand(1930..1950)).to_s + '!'
   end #end speak != upcase
 
 
