@@ -136,7 +136,7 @@ puts 'Go to the store and buy some more, 99 bottles of beer on the wall'
 #To make your program really believable, have grandma shout a different year each time; maybe any year at random between 1930 and 1950.
 #You can't stop talking to grandma until you shout BYE.
 
-
+=begin
 puts 'Speak to Grandma:'
 speak = ''
 stopSpeaking = false
@@ -146,7 +146,7 @@ while stopSpeaking != true
   
   if speak == 'BYE'
   	#stopSpeaking = true
-  	byeCount = byeCount+1
+  	byeCount = byeCount+1ar
   else
   	byeCount=0
   end #end speak == 'BYE'
@@ -162,5 +162,35 @@ while stopSpeaking != true
   	puts 'NO, NOT SINCE ' + (rand(1930..1950)).to_s + '!'
   end #end speak != upcase
 
+
+end #end while
+=end
+
+#leapyears
+# Write a program which will ask for a starting year and an ending year
+# puts all of the leap years between them (and including them, if they are also leap years). 
+# Leap years are years divisible by four (like 1984 and 2004). 
+# 	However, years divisible by 100 are not leap years (such as 1800 and 1900) 
+#   	unless they are divisible by 400 (like 1600 and 2000, which were in fact leap years). 
+
+startingYear=0
+endingYear=0
+yearCounter=0
+puts 'Enter a starting year:'
+startingYear=gets.chomp
+startingYear=startingYear.to_i
+puts 'Enter a ending year:'
+endingYear = gets.chomp
+endingYear=endingYear.to_i
+
+puts 'Here are the leap years:'
+yearCounter=startingYear
+while (yearCounter <= endingYear)
+	if (yearCounter % 400) == 0
+		puts yearCounter.to_s
+	elsif (yearCounter % 4 == 0) and (yearCounter % 1000 != 0)
+		puts yearCounter.to_s
+	end
+	yearCounter = yearCounter + 1
 
 end #end while
