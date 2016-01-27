@@ -163,7 +163,7 @@ puts  x
 #***********************************************
 #**********************************************
 
-
+=begin
 
 
 def ask question
@@ -205,5 +205,120 @@ puts 'Thank you for ...'
 puts
 puts wetsBed
 
-
+=end
 #*************************************************************************
+
+def englishNumber number # we only want 0-100
+	if number < 0
+		return 'Please enter a number 0 or greater'
+	elsif number > 100
+		return 'Please enter a number 100 or lesser'
+	end # value check
+
+	numString = ''
+	# left is how much of the number is left to write
+	# write is part of what we are writing right now
+	left = number 
+	write = left / 100 #how many hundreds left to write out?
+	left = left - write * 10
+	
+	if write > 0 #1st
+		return 'One Hundred'
+	end #if write > 0 1st
+
+	write = left / 10
+	left = left - write * 10
+	#puts 'write is ' + write.to_s + ' and left is ' + left.to_s
+
+	if write > 0 #2nd
+		if write == 1
+			if left == 0
+				numString = numString + 'ten'
+			elsif left == 1
+				numString = numString +  'eleven'
+			elsif left == 2
+				numString = numString +  'twelve'
+			elsif left == 3
+				numString = numString +  'thirteen'
+			elsif left == 4
+				numString = numString +  'fourteen'
+			elsif left == 5
+				numString = numString +  'fifteen'
+			elsif left == 6
+				numString = numString +  'sixteen'
+			elsif left == 7
+				numString = numString +  'seventeen'
+			elsif left == 8
+				numString = numString +  'eighteen'
+			elsif left == 9
+				numString = numString +  'nineteen'
+			end #ones place digits
+			left = 0 #we took care of digits in one place above so nothing to write
+		elsif write == 2
+			numString = numString + 'twenty'
+		elsif write == 3
+			numString = numString + 'thirty'
+		elsif write == 4
+			numString = numString + 'fourty'
+		elsif write == 5
+			numString = numString + 'fifty'
+		elsif write == 6
+			numString = numString + 'sixty'
+		elsif write == 7
+			numString = numString + 'seventy'
+		elsif write == 8
+			numString = numString + 'eighty'
+		elsif write == 9
+			numString = numString + 'ninety'
+		end # if write == 1
+	
+		if left > 0 # aa
+			numString = numString + '-'
+		end # write > 0 aa
+
+	end #if write > 0 2nd
+
+
+	write = left
+	left = 0
+
+	if write > 0 # third
+		if write == 1 #bb
+			numString = numString + 'one'
+		elsif write == 2
+			numString = numString + 'two'
+		elsif write == 3
+			numString = numString + 'three'
+		elsif write == 4
+			numString = numString + 'four'
+		elsif write == 5
+			numString = numString + 'five'
+		elsif write == 6
+			numString = numString + 'six'
+		elsif  write ==7
+			numString = numString + 'seven'
+		elsif write == 8
+			numString = numString + 'eight'
+		elsif write == 9
+			numString = numString + 'nine'
+		end #write == 1 bb
+	end # if write > 0 third 
+
+	if numString == '' # there was nothing there
+		return 'zero'
+	end 
+	numString  #here we return numString
+end #def
+
+
+puts englishNumber(  0)
+puts englishNumber(  2)
+
+puts englishNumber(  9)
+puts englishNumber( 10)
+puts englishNumber( 11)
+puts englishNumber( 17)
+puts englishNumber( 32)
+puts englishNumber( 88)
+puts englishNumber( 99)
+puts englishNumber(100)
