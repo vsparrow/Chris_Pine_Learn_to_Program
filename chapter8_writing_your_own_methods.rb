@@ -325,6 +325,7 @@ puts englishNumber(100)
 
 =end
 
+ 
 #********************************************************
 #refactor num to alpha
 
@@ -347,6 +348,65 @@ def englishNumber number
 	# write is 	the part we are working on 
 
 	left = number
+
+#***** TRILLION  1000000000000
+	write = left / 1000000000000
+	left = left - write * 1000000000000
+	if write > 0
+		trillions = englishNumber write 
+		numString = numString + trillions + ' trillion'
+
+		if left > 0
+			numString = numString + ' '
+		end
+	end
+
+
+
+#***** BILLIONS
+	write = left /1000000000
+	left = left - write * 1000000000
+	if write > 0
+		billions = englishNumber write
+		numString = numString + billions + ' billion'
+
+		if left > 0
+			numString = numString + ' '
+		end
+	end
+	
+
+#***** MILLIONS
+	write = left / 1000000
+	left = left - write  * 1000000
+	if write > 0
+		millions = englishNumber write
+		numString = numString + millions + ' million'
+
+		if left > 0
+			numString = numString + ' '
+		end
+	end
+
+#***** THOUSANDS
+	write = left / 1000
+	left = left - write * 1000
+	#puts 'left ' + left.to_s 
+	#puts 'write ' + write.to_s 
+
+	if write > 0
+		thousands = englishNumber write
+		numString = numString + thousands + ' thousand'
+
+		if left > 0
+			numString = numString + ' '
+		end
+
+	end # if write > 0
+
+
+
+#*****
 	write = left / 100 # how many hundreds to write
 	left = left - write * 100 # subtract hundreds
 
@@ -386,8 +446,11 @@ def englishNumber number
 	numString # return
 end # def
 
+#puts englishNumber(1000)
+#puts englishNumber(3211)
+#puts englishNumber(999999)
 
-
+=begin
 puts englishNumber(  0)
 puts englishNumber(  9)
 puts englishNumber( 10)
@@ -399,6 +462,117 @@ puts englishNumber( 99)
 puts englishNumber(100)
 puts englishNumber(101)
 puts englishNumber(234)
+puts englishNumber(1000)
 puts englishNumber(3211)
 puts englishNumber(999999)
+puts englishNumber(1999999)
+puts englishNumber(22999999)
+puts englishNumber(345999999)
+puts englishNumber(1345999999)
+puts englishNumber(22345999999)
+puts englishNumber(555345999999)
 puts englishNumber(1000000000000)
+puts englishNumber(27000000000000)
+puts englishNumber(141000000000000)
+=end 
+# Expand upon englishNumber.
+# First, put in thousands. So it should return 'one thousand' instead of 'ten hundred' and 'ten thousand' instead of 'one hundred hundred'. 
+
+#  Expand upon englishNumber some more. Now put in millions, so you get 'one million' instead of 'one thousand thousand'. 
+#  Then try adding billions and trillions. How high can you go? 
+
+
+=begin
+ 
+#********************************************************************************************
+# weddingNumber : work almost the same as englishNumber,
+# except that it should insert the word "and" all over the place, returning things like 'nineteen hundred and seventy and two'
+
+def weddingNumber number 
+
+	numString = ''
+	onesPlace = ['one','two','three','four','five','six','seven','eight','nine']
+	tensPlace = ['ten','twenty','thirty','fourty','fifty','sixty','seventy','eighty','ninety']
+	teenagers = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+	 
+
+	left = number
+	write = left 
+
+	if write > 99
+		write = write /100
+		left = left - write * 100
+
+		hundreds = weddingNumber write
+		numString = numString + hundreds + ' hundred'
+
+		if left > 0
+			numString = numString + ' and '
+		end
+
+		#puts write
+		#puts left 
+	end # if write > 99
+
+
+
+
+
+
+	 #tens place	 
+
+	 if left> 10 and left < 20 #special
+	 	numString = numString + teenagers[left-11].to_s
+	 	#puts 'something'
+	 	write = 0
+	 	left = 0
+	 end #special
+
+	 write = left
+	 write = write / 10
+	 left = left - write * 10
+
+	 #puts write.to_s
+	 #puts left.to_s
+
+	 if write > 0
+	 	numString = numString + tensPlace[write -1]
+
+	 	#if left > 0
+	 		#numString = numString + ' '
+	 	#end
+	 end
+
+
+	 if left > 0 and left < 10
+	 	numString = numString + onesPlace[left -1 ]
+	 end
+	 numString
+end # def
+
+#puts weddingNumber 1110
+#puts weddingNumber 21
+#puts weddingNumber 55
+#puts weddingNumber 11
+#puts weddingNumber 66
+puts weddingNumber 613
+puts weddingNumber 665
+puts weddingNumber 1665
+puts weddingNumber 1999
+puts weddingNumber 2000
+puts weddingNumber 2002
+puts weddingNumber 2014
+puts weddingNumber 2040
+puts weddingNumber 2102
+puts weddingNumber 2214
+
+=end 
+
+
+
+ # ****************************************************************************************
+ # Ninety-nine bottles of beer..." 
+ # Using englishNumber and your old program, 
+ # write out the lyrics to this song the right way this time. 
+ # Punish your computer: have it start at 9999. 
+
