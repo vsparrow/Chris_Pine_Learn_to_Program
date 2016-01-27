@@ -576,3 +576,45 @@ puts weddingNumber 2214
  # write out the lyrics to this song the right way this time. 
  # Punish your computer: have it start at 9999. 
 
+#print lyrics to 99 bottles of beer on the wall
+  #99 bottles of beer on the wall, 99 bottles of beer.
+  #Take one down and pass it around, 98 bottles of beer on the wall.
+
+OLD_CODE_BELOW = nil
+
+
+def beerSong number
+	if number < 0
+		puts "ERROR: You need to have a non-negative number"
+		return nil
+	end
+
+	beerCount=number
+	
+	#puts beerCountAplhabetical 
+	while beerCount > 0
+	  beerCountAplhabetical = englishNumber beerCount
+	  if beerCount != 1
+	    puts beerCountAplhabetical.capitalize + ' bottles of beer on the wall, ' +beerCountAplhabetical + ' bottles of beer.'
+	  else
+	  	puts beerCountAplhabetical.capitalize + ' bottle of beer on the wall, ' +beerCountAplhabetical + ' bottle of beer.'
+	  end #end if beercount!=1
+
+	  beerCount = beerCount -1
+ 	  beerCountAplhabetical = englishNumber beerCount
+
+	  if beerCount > 0
+	  	puts 'Take one down and pass it around, ' +beerCountAplhabetical + ' bottles of beer on the wall.'
+	  else #if count 0
+	  	puts 'Take one down and pass it around, no more bottles of beer on the wall.'
+	  end #end if
+
+	end #end while
+	puts 'No more bottles of beer on the wall, no more bottles of beer.'
+	puts 'Go to the store and buy some more, 99 bottles of beer on the wall'
+end
+
+
+
+beerSong 3
+
