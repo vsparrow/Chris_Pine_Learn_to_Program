@@ -252,7 +252,7 @@ class Dragon
 
 end #class
 
-
+=begin
 pet = Dragon.new "FATlizrd"
 pet.feed
 pet.walk
@@ -264,4 +264,95 @@ pet.putToBed
 pet.putToBed
 pet.putToBed
 pet.putToBed
+=end
 
+
+
+
+# Make an OrangeTree class. 
+# height method which returns its height, 
+# oneYearPasses method, which, when called, ages the tree one year. Each year the tree grows taller 
+#               (however much you think an orange tree should grow in a year), 
+# after some number of years (again, your call) the tree should die. 
+# For the first few years, it should not produce fruit, but after a while it should, 
+#               older trees produce more each year than younger trees
+# you should be able to countTheOranges (which returns the number of oranges on the tree), 
+# and pickAnOrange (which reduces the @orangeCount by one and returns a string telling you how delicious the orange was, 
+#               or else it just tells you that there are no more oranges to pick this year). 
+# Make sure that any oranges you don't pick one year fall off before the next year. 
+
+class OrangeTree
+  def initialize
+    @height = 0
+    @age    = 0
+    @orangeCount = 0
+
+    puts 'An orange tree was planted.'    
+
+  end # initialize  
+
+  def getHeight
+    puts 'Orange tree is ' + @height.to_s + ' feet tall.'
+  end # getHeight
+
+  def getAge
+    puts 'Orange tree is ' + @age.to_s + ' years old.'
+  end # getAge
+  
+  def getOrangeCount
+    puts 'The number of oranges  you have to choose are ' + @orangeCount.to_s + '.'
+  end #getOrangeCount
+
+  def pickAnOrange
+    if @orangeCount > 0
+      @orangeCount = @orangeCount - 1
+      puts 'MMMMM.. so GOOOD, we liked the orange!'
+    else
+      puts 'No oranges to pick.'
+    end
+  end #pickAnOrange
+
+  def oneYearPasses
+    
+    if @height < 5
+      @height = @height + 1
+    end # if height < 5
+
+    if @age <= 100
+      @age    = @age + 1
+    else
+      puts "The tree has run its course, and now goes to the next world"
+      exit
+    end
+    #orangeCount
+    if @age >= 10
+      @orangeCount = 50
+    elsif @age>= 5
+      @orangeCount = @age * 5
+
+    else
+      @orangeCount = 0
+    end #orangeCount by age
+
+  end # OneYearPass
+
+end #class
+
+myOrangeTree = OrangeTree.new
+myOrangeTree.getHeight
+myOrangeTree.oneYearPasses
+myOrangeTree.getOrangeCount
+myOrangeTree.getOrangeCount
+myOrangeTree.getHeight
+myOrangeTree.getAge
+myOrangeTree.getOrangeCount
+6.times do myOrangeTree.oneYearPasses
+end
+myOrangeTree.getHeight
+myOrangeTree.getAge
+myOrangeTree.getOrangeCount
+myOrangeTree.pickAnOrange
+myOrangeTree.getOrangeCount
+36.times do myOrangeTree.pickAnOrange end
+100.times do myOrangeTree.oneYearPasses end
+myOrangeTree.pickAnOrange 
