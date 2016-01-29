@@ -338,6 +338,7 @@ class OrangeTree
 
 end #class
 
+=begin
 myOrangeTree = OrangeTree.new
 myOrangeTree.getHeight
 myOrangeTree.oneYearPasses
@@ -356,3 +357,70 @@ myOrangeTree.getOrangeCount
 36.times do myOrangeTree.pickAnOrange end
 100.times do myOrangeTree.oneYearPasses end
 myOrangeTree.pickAnOrange 
+=end
+
+# Write a program so that you can interact with your baby dragon. 
+# You should be able to enter commands like feed and walk, and have those methods be called on your dragon. 
+# since what you are inputting are just strings, 
+#   you will have to have some sort of method dispatch, 
+#   where your program checks which string was entered, 
+#   then calls the appropriate method. 
+
+
+def babyDragon
+  wantDragon = nil
+  while (wantDragon != 'yes' and  wantDragon != 'no')    
+    puts 'puts Do you want a baby dragon? Enter yes or no'
+    wantDragon = gets.chomp.downcase
+    #puts wantDragon + ' was entered'
+    #puts wantDragon == 'no'
+  end #want Dragon
+
+  if wantDragon == 'no'
+    puts 'Good choice, they are hard work to raise!'
+    exit
+  end
+
+  #puts 'Cool'
+  puts 'What would you like to name your baby dragon?: '
+  name=gets.chomp
+  #puts name
+  yourBabyDragon= Dragon.new name
+  actionsWithDragon = 0
+
+  while yourBabyDragon
+    #puts 'In while loop'
+
+    actionsWithDragon = 0
+
+    while (actionsWithDragon < 1 or actionsWithDragon > 5)
+      puts 'What would you like to do with your babyDragon?:'
+      puts 'Press 1 for feed, 2 for walk, 3 for put to bed, 4 for toss, 5 for rock'
+      actionsWithDragon = gets.chomp.to_i
+    end # while actionsWithDragon not 1-5
+    #puts 'you choose step ' + actionsWithDragon.to_s
+
+    if actionsWithDragon == 1
+      #puts 'step1'
+      yourBabyDragon.feed
+    elsif actionsWithDragon == 2
+      yourBabyDragon.walk
+    elsif actionsWithDragon == 3
+      yourBabyDragon.putToBed
+    elsif actionsWithDragon == 4
+      yourBabyDragon.toss
+    else
+      yourBabyDragon.rock
+    end #if statement
+      
+
+=begin
+=end
+  puts
+  puts 
+  end # while dragon instance running
+
+end #def
+
+
+babyDragon  #calling program
